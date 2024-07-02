@@ -41,22 +41,19 @@ function createObject() {
     return [obj,subj]
 }
 
-function createThis() {
+function createThis(param1,param2) {
     var obj = {
         pc1:'msi',
         nb:'notebook',
         start: function (pc1,nb) {
-            this.pc1 = pc1 + '--';
-            this.nb = nb + '--';
+            this.pc1 = pc1 + ` -${param1}`;
+            this.nb = nb + ` -${param2}`;
             return `${this.nb}+${this.pc1}`
         }
     }
-    return obj
+    return console.log(obj.start(param1,param2))
 }
 
-console.log(createThis().start('power','stop'))
-
-const func = createObject();
-console.log(func[0].name)
-console.log(func[0].call())
-console.log(func[1])
+// const func = createObject();
+// console.log(func[0].name)
+// console.log(func[0].call())
