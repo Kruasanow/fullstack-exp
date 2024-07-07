@@ -75,7 +75,7 @@ function createObjectWDiffNotation(choose,that_to_do) {
 // console.log(createObjectWDiffNotation('object literal','forward','car1'))
 
 
-function showAllCircles(arr, operation) {
+function showAllCircles(arr, operation) { 
     if (typeof arr == "object") {
         switch (operation) {
 
@@ -148,4 +148,27 @@ function callAnonymusOrSelfExecFunc(elem,param) {
 }
 // console.log(callAnonymusOrSelfExecFunc(2,12))
 
-//132
+function ObjectCreationWConstructor(method) {
+    function Game() {
+        this.name = 'default',
+        this.price = 0,
+        this.state = false,
+        this.hours = 0
+    }
+    switch (method) {
+        case 'function':
+            var PUBG = new Game();
+            PUBG.name = 'PUBG',
+            PUBG.price = 399,
+            PUBG.hours = 500
+            return PUBG;
+        case 'ObjectCreate':
+            var WOT = Object.create(Game.prototype);
+            Game.call(WOT)
+            WOT.name = 'WOT';
+            WOT['price'] = 199
+            return WOT
+    };
+};
+// console.log(ObjectCreationWConstructor('ObjectCreate'))
+
