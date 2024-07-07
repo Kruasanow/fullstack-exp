@@ -1,7 +1,7 @@
 
 // function doVar() {
-//     var name='dima';
-//     var secname='rusanow';
+//     var name='222';
+//     var secname='111';
 //     return [name,secname];
 // }
 
