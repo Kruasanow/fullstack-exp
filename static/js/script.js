@@ -23,36 +23,56 @@
 //     }
 // }
 
-function createObject() {
-    const obj = {
-        name:"egor",
-        surname:"peppa",
-        call: function() {
-            const n = 12; 
-            return `my name is ${n}`;
-        }
-    };
-
-    var subj = new Object();
-    subj.name = 'sss';
-    subj.surname = 'www';
-    delete subj.surname;
-
-    return [obj,subj]
-}
-
-function createThis(param1,param2) {
-    var obj = {
-        pc1:'msi',
-        nb:'notebook',
-        start: function (pc1,nb) {
-            this.pc1 = pc1 + ` -${param1}`;
-            this.nb = nb + ` -${param2}`;
-            return `${this.nb}+${this.pc1}`
+function createObjectWDiffNotation(choose,that_to_do) {
+    var delete_arg = function(args,obj) {
+        if (args.length === 0) {
+            return false;
+        } else {
+            args.forEach((arg)=> delete obj[arg])
         }
     }
-    return console.log(obj.start(param1,param2))
-}
+    switch (choose) {
+        case 'object literal':
+            var object_cars = {
+                car1: 'dacia',
+                car2: 'uaz',
+                car3: 'niva',
+                moves: function(direction) {
+                    var res;
+                    switch (direction) {
+                        case 'left':
+                            res = 'move left';
+                            break;
+                        case 'right':
+                            res = 'move right';
+                            break;
+                        case 'forward':
+                            res = 'move forward';
+                            break;
+                        default:
+                            res = 'stay here';
+                    }
+                    return res
+                },
+                doing: function() {
+                    return`this car is moving ${this.moves(that_to_do)} on ${this.car2}` // while creating an object i can not call elements by `this` because they did not was created on that time
+                }
+            };
+            delete_arg(Array.from(arguments).slice(2),object_cars)
+            return object_cars;
+        case 'object constructor':
+            var object_weapon = new Object();
+            object_weapon.weapon1 = 'ak-47';
+            object_weapon.weapon2 = 'm4a1';
+            object_weapon.weapon3 = 'awm';
+            object_weapon.doing = function(that_to_do) {
+                return `this guy did a shoot with ${that_to_do}`;
+            };
+            delete_arg(Array.from(arguments).slice(2),object_weapon)
+            return object_weapon
+    };
+};
+// console.log(createObjectWDiffNotation('object literal','forward','car1'))
 
 
 function showAllCircles(arr, operation) {
@@ -128,3 +148,4 @@ function callAnonymusOrSelfExecFunc(elem,param) {
 }
 // console.log(callAnonymusOrSelfExecFunc(2,12))
 
+//132
