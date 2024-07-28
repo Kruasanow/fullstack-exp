@@ -172,3 +172,7 @@ function ObjectCreationWConstructor(method) {
 };
 // console.log(ObjectCreationWConstructor('ObjectCreate'))
 
+
+function ChangeCurrentUrl(url) {
+    
+}
